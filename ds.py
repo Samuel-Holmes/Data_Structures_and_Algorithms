@@ -252,3 +252,62 @@ print(subway.stringify_list())
 subway.remove_by_value("Times Square")
 
 print(subway.stringify_list())
+
+
+# SWAPPING NODES IN A LINKED LIST 
+
+"""
+As an example lets say we have values of two nodes val1 and val2
+These can correspond to variables called node1 and node2
+We would like to swap node1 for node2 but we cannot use an index we will have to iterate through the list 
+Following that we need to make sure the pointers are properly assigned for the functionality of the linked list to be maintained 
+
+"""
+# Practice below
+ 
+class Node: 
+  def __init__(self, value=None, link=None):
+    self.value = value
+    self.link = link
+
+  def set_val(self, value):
+    self.value = value
+  
+  def get_value(self):
+    return self.value
+
+  def set_link(self, link):
+    self.link = link
+  
+  def get_link(self):
+    return self.link
+
+class LinkList:
+  def __init__(self):
+    self.head = None
+
+  def set_head(self, head):
+    
+    if self.head != None:
+      head.set_link(self.head)
+      self.head = head
+    
+    else:
+      self.head = head
+
+
+  def add_to_head(self, node):
+    pass
+
+  def remove_from_head(self):
+    pass
+
+  def remove_by_value():
+    pass
+    
+
+one = Node(20)
+two = Node(30)
+three = Node(40)
+four = Node(50)
+
