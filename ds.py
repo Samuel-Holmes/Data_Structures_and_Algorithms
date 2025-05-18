@@ -263,6 +263,7 @@ We would like to swap node1 for node2 but we cannot use an index we will have to
 Following that we need to make sure the pointers are properly assigned for the functionality of the linked list to be maintained 
 
 """
+
 # Practice below
  
 class Node: 
@@ -297,15 +298,66 @@ class LinkList:
 
 
   def add_to_head(self, node):
-    pass
+    if self.head != None:
+      node.set_link(self.head)
+      self.head = node
+    
+    else:
+      self.head = node
 
   def remove_from_head(self):
-    pass
+    if self.head is not None:
+      self.head = self.head.get_link()
 
-  def remove_by_value():
-    pass
     
 
+  def remove_by_value(self, value_to_remove):
+    # if the list is empty
+    if self.head_node is None:
+        return
+
+    # if value is at the head
+    if self.head_node.get_value() == value_to_remove:
+        new_head_node = self.head_node.get_link()
+        self.head_node.set_link(None)
+        self.head_node = new_head_node
+        return
+
+    # Traverse the list
+    current_node = self.head_node
+    while current_node.get_link() is not None:
+        next_node = current_node.get_link()
+        if next_node.get_value() == value_to_remove:
+            current_node.set_link(next_node.get_link())
+            next_node.set_link(None)  
+            return
+        current_node = current_node.get_link()
+      
+
+# defining replace node by value function
+
+  def swap_node_by_value(self,value_to_remove,replacement_node):
+    
+    if self.head_node is None:
+      self.head_node = replacement_node
+      return
+
+    if self.head_node.get_value() == value_to_remove:
+      replacement_node.set_link(self.head_node.get_link())
+      self.head.set_link(None)
+      self.head = replacement_node
+      return
+    
+    # traversing the list, replacing node when found and maintaining proper links 
+
+    current_node = self.head_node
+    while current_node.get_link() is not None:
+      next_node = current_node.get_link()
+      if next_node.get_value() == value_to_remove:
+
+    
+
+test = LinkList()
 one = Node(20)
 two = Node(30)
 three = Node(40)
