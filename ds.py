@@ -334,9 +334,9 @@ class LinkList:
         current_node = current_node.get_link()
       
 
-# defining replace node by value function
+# defining replace node by value function, first instance of value only
 
-  def swap_node_by_value(self,value_to_remove,replacement_node):
+  def swap_node_by_value_first_instance(self,value_to_remove,replacement_node):
     
     if self.head_node is None:
       self.head_node = replacement_node
@@ -344,8 +344,8 @@ class LinkList:
 
     if self.head_node.get_value() == value_to_remove:
       replacement_node.set_link(self.head_node.get_link())
-      self.head.set_link(None)
-      self.head = replacement_node
+      self.head_node.set_link(None)
+      self.head_node = replacement_node
       return
     
     # traversing the list, replacing node when found and maintaining proper links 
@@ -354,6 +354,11 @@ class LinkList:
     while current_node.get_link() is not None:
       next_node = current_node.get_link()
       if next_node.get_value() == value_to_remove:
+        current_node.set_link(replacement_node)
+        replacement_node.set_link(next_node.get_link())
+        next_node.set_link(None)
+        break
+      current_node = current_node.get_link()
 
     
 
