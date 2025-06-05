@@ -131,11 +131,15 @@ class Node:
     return self.value
 
 
+
 class DoublyLinkedList:
+  
   def __init__(self):
     self.head_node = None
     self.tail_node = None
   
+# Method to add a new node to head also checking if there is already a head node and adjusting links accordingly 
+
   def add_to_head(self, new_value):
     new_head = Node(new_value)
     current_head = self.head_node
@@ -149,6 +153,8 @@ class DoublyLinkedList:
     if self.tail_node == None:
       self.tail_node = new_head
 
+# Method to add a new node to the tail also checking if there is already a tail node currently and adjusting links accordingly 
+
   def add_to_tail(self, new_value):
     new_tail = Node(new_value)
     current_tail = self.tail_node
@@ -161,6 +167,8 @@ class DoublyLinkedList:
 
     if self.head_node == None:
       self.head_node = new_tail
+
+# Method to remove the node from the head if there is no head node then the method returns None. Adjustment to previous node link if there is a node following the head node. If the node is the last node in the list i.e. the head is also the tail then the remove tail method is called.
 
   def remove_head(self):
     removed_head = self.head_node
