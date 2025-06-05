@@ -186,6 +186,8 @@ class DoublyLinkedList:
 
     return removed_head.get_value()
 
+# Method to remove the tail node. Checks firstly if there is a tail node. Sets the tail node as the previous node from the tail. Then removes the new tails next node.
+
   def remove_tail(self):
     removed_tail = self.tail_node
 
@@ -201,6 +203,8 @@ class DoublyLinkedList:
       self.remove_head()
 
     return removed_tail.get_value()
+
+# Method to remove by value from the list.
 
   def remove_by_value(self, value_to_remove):
     node_to_remove = None
