@@ -266,117 +266,30 @@ subway.remove_by_value("Times Square")
 print(subway.stringify_list())
 
 
-# SWAPPING NODES IN A LINKED LIST 
+# TWO POINTERS 
 
-"""
-As an example lets say we have values of two nodes val1 and val2
-These can correspond to variables called node1 and node2
-We would like to swap node1 for node2 but we cannot use an index we will have to iterate through the list 
-Following that we need to make sure the pointers are properly assigned for the functionality of the linked list to be maintained 
-
-"""
-
-# Practice below
- 
-class Node: 
-  def __init__(self, value=None, link=None):
-    self.value = value
-    self.link = link
-
-  def set_val(self, value):
-    self.value = value
+# consider a problem such as create a method that returns the nth last element of a singly linked list 
+    
+def nth_last_node(linked_list, n):
   
-  def get_value(self):
-    return self.value
-
-  def set_link(self, link):
-    self.link = link
+  current = None
+  tail_seeker = linked_list.head_node
+  count = 1
   
-  def get_link(self):
-    return self.link
-
-class LinkList:
-  def __init__(self):
-    self.head = None
-
-  def set_head(self, head):
+  while tail_seeker:
     
-    if self.head != None:
-      head.set_link(self.head)
-      self.head = head
+    tail_seeker = tail_seeker.get_next_node()
+    count += 1
     
-    else:
-      self.head = head
-
-
-  def add_to_head(self, node):
-    if self.head != None:
-      node.set_link(self.head)
-      self.head = node
-    
-    else:
-      self.head = node
-
-  def remove_from_head(self):
-    if self.head is not None:
-      self.head = self.head.get_link()
-
-    
-
-  def remove_by_value(self, value_to_remove):
-    # if the list is empty
-    if self.head_node is None:
-        return
-
-    # if value is at the head
-    if self.head_node.get_value() == value_to_remove:
-        new_head_node = self.head_node.get_link()
-        self.head_node.set_link(None)
-        self.head_node = new_head_node
-        return
-
-    # Traverse the list
-    current_node = self.head_node
-    while current_node.get_link() is not None:
-        next_node = current_node.get_link()
-        if next_node.get_value() == value_to_remove:
-            current_node.set_link(next_node.get_link())
-            next_node.set_link(None)  
-            return
-        current_node = current_node.get_link()
+    if count >= n + 1:
       
+      if current is None:
+        current = linked_list.head_node
+      
+      else:
+        current = current.get_next_node()
+  
+  return current
 
-# defining replace node by value function, first instance of value only
 
-  def swap_node_by_value_first_instance(self,value_to_remove,replacement_node):
-    
-    if self.head_node is None:
-      self.head_node = replacement_node
-      return
-
-    if self.head_node.get_value() == value_to_remove:
-      replacement_node.set_link(self.head_node.get_link())
-      self.head_node.set_link(None)
-      self.head_node = replacement_node
-      return
-    
-    # traversing the list, replacing node when found and maintaining proper links 
-
-    current_node = self.head_node
-    while current_node.get_link() is not None:
-      next_node = current_node.get_link()
-      if next_node.get_value() == value_to_remove:
-        current_node.set_link(replacement_node)
-        replacement_node.set_link(next_node.get_link())
-        next_node.set_link(None)
-        break
-      current_node = current_node.get_link()
-
-    
-
-test = LinkList()
-one = Node(20)
-two = Node(30)
-three = Node(40)
-four = Node(50)
 
